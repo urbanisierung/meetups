@@ -1,0 +1,14 @@
+{
+  "posts": [
+    { "id": 1, "title": "Rocket scientists can no longer work without Camunda" },
+    { "id": 2, "title": "1&1, Esentri and Camunda: giant <3" },
+    { "id": 3, "title": "Biggest Camunda User Group in Ettlingen!" }
+  ],
+  "comments": [
+    { "id": 1, "body": "Awesome!", "postId": 1 },
+    { "id": 2, "body": "Just wow!", "postId": 1 }
+  ],
+  "profile": {
+    "name": "camunda-bot"
+  }
+}
