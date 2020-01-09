@@ -33,12 +33,12 @@
 2. Configuring service tasks with **Zeebe Modeler**
 3. Creating a new **Zeebe Cluster** in the **Cloud**
 4. Preparing cluster:
-  a. Adding some worker variables
-  b. Creating a new Client to interact with Zeebe
+   1. Adding some worker variables
+   2. Creating a new Client to interact with Zeebe
 5. Using **Zeebe Control** to
-  a. Get status information
-  b. Deploy a new workflow
-  c. Start a new instance
+   1. Get status information
+   2. Deploy a new workflow
+   3. Start a new instance
 6. Using **Operate** to inspect instances
 
 ## Workflow
