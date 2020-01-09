@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Zeebe Modeler" exporterVersion="0.6.2" camunda:diagramRelationId="acab75dd-2479-4c33-8cb2-15f262e4c270">
+  <bpmn:process id="demo-workflow" name="demo-workflow" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>SequenceFlow_0qe4vds</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_0qe4vds" sourceRef="StartEvent_1" targetRef="generic-comments" />
+    <bpmn:sequenceFlow id="SequenceFlow_0k5ima8" sourceRef="generic-comments" targetRef="custom-posts" />
+    <bpmn:endEvent id="EndEvent_0ejk640">
+      <bpmn:incoming>SequenceFlow_02bm5td</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_02bm5td" sourceRef="custom-posts" targetRef="EndEvent_0ejk640" />
+    <bpmn:serviceTask id="custom-posts" name="Get custom posts">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="CAMUNDA-HTTP" retries="1" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="url" value="https://my-json-server.typicode.com/${project}/${repo}/posts/1" />
+          <zeebe:header key="method" value="GET" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>SequenceFlow_0k5ima8</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_02bm5td</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="generic-comments" name="Get generic comments">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="CAMUNDA-HTTP" retries="1" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="url" value="https://jsonplaceholder.typicode.com/comments/1" />
+          <zeebe:header key="method" value="GET" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>SequenceFlow_0qe4vds</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0k5ima8</bpmn:outgoing>
+    </bpmn:serviceTask>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="demo-workflow">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="173" y="102" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_0qe4vds_di" bpmnElement="SequenceFlow_0qe4vds">
+        <di:waypoint x="209" y="120" />
+        <di:waypoint x="280" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0k5ima8_di" bpmnElement="SequenceFlow_0k5ima8">
+        <di:waypoint x="380" y="120" />
+        <di:waypoint x="460" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="EndEvent_0ejk640_di" bpmnElement="EndEvent_0ejk640">
+        <dc:Bounds x="632" y="102" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_02bm5td_di" bpmnElement="SequenceFlow_02bm5td">
+        <di:waypoint x="560" y="120" />
+        <di:waypoint x="632" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="ServiceTask_0fp8blp_di" bpmnElement="custom-posts">
+        <dc:Bounds x="460" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_1czu29c_di" bpmnElement="generic-comments">
+        <dc:Bounds x="280" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
