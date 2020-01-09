@@ -59,8 +59,10 @@ Each service task needs the following configuration:
 * Type: `CAMUNDA-HTTP`
 * Retries: 1
 * Headers:
-  * Key: `url`, value: `https://jsonplaceholder.typicode.com/comments` (change url for the second one)
+  * Key: `url`, value: `https://jsonplaceholder.typicode.com/comments/1` (change url for the second one)
   * Key: `method`, value: `GET`
+
+The final *bpmn* file is [here](./2020-01-15-demo-workflow.bpmn).
 
 ## Client interaction
 
