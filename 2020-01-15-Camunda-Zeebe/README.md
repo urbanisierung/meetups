@@ -48,6 +48,14 @@
 * `GET https://my-json-server.typicode.com/urbanisierung/meetups/posts/1`
 * `GET https://jsonplaceholder.typicode.com/comments/1`
 
+Optional: Of course a crypto API may not be missing here:
+
+* `GET https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest?convert=USD&symbol=ETH`
+* for this you need an API KEY from [coinmarketcap](https://coinmarketcap.com/api/)
+  * we only need the price on the context so we can add an I/O mapping for output parameters:
+    * `source`: `data.ETH.quote.USD.price`
+    * `target`: `eth_price`
+
 ### Cawemo workflow
 
 [![demo workflow](2020-01-15-demo-workflow.png)](https://cawemo.com/share/bf1c89f8-afab-462f-8758-b93a1f770b73)
